@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Script from "next/script";
 import Head from "next/head";
 import { useState } from "react";
 
@@ -21,10 +22,16 @@ const Home: NextPage = () => {
         <meta name="description" content="The simplest image uploader" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main
-        className="max-w-screen-md mx-auto px-5 flex flex-col justify-between h-[100vh]"
-        style={{ minHeight: "-webkit-fill-available" }}
-      >
+      <Script id="show-banner" strategy="lazyOnload">
+        {`function appHeight() {
+          const doc = document.documentElement
+          doc.style.setProperty('--vh', (window.innerHeight*.01) + 'px');
+          }
+
+          window.addEventListener('resize', appHeight);
+          appHeight();`}
+      </Script>
+      <main className="max-w-screen-md mx-auto px-5 flex flex-col justify-between h-[calc(var(--vh,1vh)*100)]">
         <div>
           <Header />
           <Dropzone setFile={uploadFile} />
