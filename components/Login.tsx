@@ -1,5 +1,4 @@
 import { FC, Dispatch } from 'react';
-import Image from 'next/image';
 
 type LoginProps = {
     handleLogin: Dispatch<any>;

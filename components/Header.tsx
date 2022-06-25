@@ -1,6 +1,12 @@
+import { FC, Dispatch } from 'react';
+
 import { useAuth } from '../context/AuthContext';
 
-const Header: React.FC = () => {
+type HeaderProps = {
+    refreshFunction: Dispatch<any>;
+};
+
+const Header: FC<HeaderProps> = ({ refreshFunction }) => {
     const { user, logout } = useAuth();
 
     const handleLogout = async () => {
@@ -9,7 +15,12 @@ const Header: React.FC = () => {
 
     return (
         <header className="flex flex-row justify-between items-center py-5 ">
-            <h1 className="text-2xl font-bold">image uploader</h1>
+            <h1
+                className="text-2xl font-bold cursor-pointer"
+                onClick={refreshFunction}
+            >
+                image uploader
+            </h1>
             {user ? (
                 <div className="flex items-center gap-5">
                     <span>{user.displayName}</span>
