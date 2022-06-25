@@ -14,17 +14,19 @@ const Asset: NextPage<AssetType> = ({ fileURL }) => {
         <>
             <Head>
                 <title>Image Uploader</title>
-                <meta property="og:title" content="Image Uploader" />
+
+                <meta property="og:url" content="https://www.whx.world/" />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content={document.URL} />
-                <meta property="og:image" content={fileURL} />
-                <meta
-                    property="og:description"
-                    content="Image Uploader - upload your image without annoying stuff."
-                />
-                <meta name="theme-color" content="#FF0000" />
+                <meta property="og:title" content="Image Uploader whx.world" />
+                <meta property="og:description" content="" />
+                <meta property="og:image" content={`${fileURL}`} />
 
                 <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:domain" content="whx.world" />
+                <meta property="twitter:url" content="https://www.whx.world/" />
+                <meta name="twitter:title" content="Image Uploader whx.world" />
+                <meta name="twitter:description" content="" />
+                <meta name="twitter:image" content={`${fileURL}`} />
             </Head>
             {fileURL ? <img src={fileURL} alt="" /> : <h1>Not found!</h1>}
         </>
