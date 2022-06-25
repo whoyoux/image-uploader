@@ -1,5 +1,10 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import {
+    onAuthStateChanged,
+    signInWithPopup,
+    signInWithRedirect,
+    signOut
+} from 'firebase/auth';
 
 import { auth, googleProvider } from '../config/firebase';
 
@@ -45,7 +50,8 @@ export const AuthContextProvider = ({
     }, []);
 
     const login = async () => {
-        return await signInWithPopup(auth, googleProvider);
+        // return await signInWithPopup(auth, googleProvider);
+        return await signInWithRedirect(auth, googleProvider);
     };
 
     const logout = async () => {
